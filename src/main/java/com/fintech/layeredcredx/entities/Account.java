@@ -26,7 +26,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@RequiredArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Account extends BaseAuditableEntity {
 

@@ -1,7 +1,14 @@
 package com.fintech.layeredcredx.repositories;
 
+import com.fintech.layeredcredx.entities.QTransaction;
+import com.fintech.layeredcredx.entities.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
-public interface TransactionRepository {
+public interface TransactionRepository extends JpaRepository<Transaction, UUID>, QuerydslPredicateExecutor<Transaction>, QuerydslBinderCustomizer<QTransaction> {
 }

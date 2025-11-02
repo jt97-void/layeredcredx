@@ -2,8 +2,6 @@ package com.fintech.layeredcredx.dtos;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,11 +21,10 @@ public class BaseResponseDto<T> {
     private List<String> errors;
     private LocalDateTime timestamp;
 
-    public static <T> BaseResponseDto<T> success(T data, String message) {
+    public static <T> BaseResponseDto<T> success(T data) {
         return BaseResponseDto.<T>builder()
                 .isSuccess(true)
                 .code(SUCCESS)
-                .message(message)
                 .data(data)
                 .timestamp(now())
                 .build();
