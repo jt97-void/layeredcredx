@@ -27,8 +27,11 @@ public final class QueryDslUtils {
             T to,
             Supplier<? extends ComparableExpression<T>> path
     ) {
-        Optional.ofNullable(from).ifPresent(f -> builder.and(path.get().goe(f)));
-        Optional.ofNullable(to).ifPresent(t -> builder.and(path.get().loe(t)));
+        Optional.ofNullable(from)
+                .ifPresent(f -> builder.and(path.get().goe(f)));
+
+        Optional.ofNullable(to)
+                .ifPresent(t -> builder.and(path.get().loe(t)));
     }
 
     public static void addLikeIgnoreCase(BooleanBuilder builder, String value, Function<String, StringExpression> pathFn) {

@@ -120,6 +120,7 @@ public class TransactionServiceImpl implements TransactionService {
 //
 //        return repository.findAll(builder, pageable).map(mapper::toDto);
 
+        // cleaner way testing/trial :)
         addIfPresent(builder, criteria.getAccountName(), id -> builder.and(q.account.name.eq(id)));
         addIfPresent(builder, criteria.getType(), t -> builder.and(q.type.eq(t)));
         addDateRange(builder, criteria.getFromDate(), criteria.getToDate(), () -> q.transactionDate);

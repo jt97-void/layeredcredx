@@ -39,8 +39,7 @@ public class TransactionController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<BaseResponseDto<Page<TransactionDto>>> search(
-            @RequestBody TransactionCriteriaDto criteria, Pageable pageable) {
+    public ResponseEntity<BaseResponseDto<Page<TransactionDto>>> search(@RequestBody TransactionCriteriaDto criteria, Pageable pageable) {
         Page<TransactionDto> page = service.search(criteria, pageable);
         return ResponseEntity.ok(BaseResponseDto.success(page));
     }
