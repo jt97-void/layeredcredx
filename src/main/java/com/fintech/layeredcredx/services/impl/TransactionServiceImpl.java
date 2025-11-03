@@ -8,7 +8,6 @@ import com.fintech.layeredcredx.mappers.TransactionMapper;
 import com.fintech.layeredcredx.repositories.TransactionRepository;
 import com.fintech.layeredcredx.services.TransactionService;
 import com.querydsl.core.BooleanBuilder;
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -27,7 +26,6 @@ public class TransactionServiceImpl implements TransactionService {
 
     private final TransactionRepository repository;
     private final TransactionMapper mapper;
-
 
     @Override
     @Transactional
@@ -60,7 +58,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     @Transactional
     public TransactionDto update(TransactionDto dto) {
-//        In case of void
+//        In case of void use this instead
 //        repository.findById(dto.getId())
 //                .ifPresentOrElse(existing -> repository.save(mapper.toEntity(dto)), () -> {
 //                    throw new EntityNotFoundException(TRANSACTION_NOT_FOUND + dto.getId());
@@ -80,9 +78,8 @@ public class TransactionServiceImpl implements TransactionService {
     public void delete(UUID id) {
         repository.findById(id)
                 .ifPresentOrElse(repository::delete, () -> {
-                            throw new EntityNotFoundException(TRANSACTION_NOT_FOUND + id);
-                        }
-                );
+                    throw new EntityNotFoundException(TRANSACTION_NOT_FOUND + id);
+                });
     }
 
     @Override
